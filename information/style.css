@@ -1,0 +1,10 @@
+tr,th,td{
+    border: 1px solid black;
+    
+}
+th{
+    text-align: center;
+}
+hr{
+    color: white;
+}

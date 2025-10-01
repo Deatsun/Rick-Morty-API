@@ -79,7 +79,7 @@
 
 
             var a = document.createElement("a");
-            a.setAttribute("href", json.results[i].url);
+            a.setAttribute("href", "http://127.0.0.1:5501/information/info.html?id=" +json.results[i].id);
             a.setAttribute("class", "btn btn-success");
             a.setAttribute("target", "_blank");
             a.appendChild(document.createTextNode("Information"));
