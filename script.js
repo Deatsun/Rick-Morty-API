@@ -1,5 +1,5 @@
 function setHref (a, url) {
-   if (window.location.href.includes('github.com')) {
+   if (window.location.href.includes('github.io')) {
      a.setAttribute("href", `/Rick-Morty-API${url}`);}
    else {
      a.setAttribute("href", url);
