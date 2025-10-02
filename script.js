@@ -1,3 +1,12 @@
+function setHref (a, url) {
+   if (window.location.href.includes('github.com')) {
+     a.setAttribute("href", `/Rick-Morty-API${url}`);}
+   else {
+     a.setAttribute("href", url);
+   } 
+};
+
+
 
  var xhr = new XMLHttpRequest();
 
@@ -74,12 +83,8 @@
                 li4.textContent = "Status: ❔";
             };
 
-            
-
-
-
             var a = document.createElement("a");
-            a.setAttribute("href", "/info.html?id=" +json.results[i].id);
+            setHref(a, `/info.html?id=${json.results[i].id}`);
             a.setAttribute("class", "btn btn-success");
             a.setAttribute("target", "_blank");
             a.appendChild(document.createTextNode("Information"));
