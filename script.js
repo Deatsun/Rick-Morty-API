@@ -15,9 +15,53 @@ function setHref (a, url) {
  xhr.onreadystatechange = function(){
     if(xhr.readyState == 4 && xhr.status == 200){
         var json = JSON.parse(xhr.responseText);
+                //Pagination
+
+                /*  </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>*/
+
+        var pagenumber = json.info.pages;
+
+        for(var i = 1; i <= pagenumber; i++){
+            var li = document.createElement("li");
+            li.setAttribute("class", "page-item");
+
+            var a = document.createElement("a");
+            a.setAttribute("class", "page-link");
+            a.setAttribute("href", "/index.html?page=" + i);
+            a.appendChild(document.createTextNode(i));
+
+            li.appendChild(a);
+
+            document.getElementById("pagination").appendChild(li);
+        }
+        var lilast = document.createElement("li");
+        lilast.setAttribute("class", "page-item");
+
+        var alast = document.createElement("a");
+        alast.setAttribute("class", "page-link");
+        alast.setAttribute("href", "/index.html?page=" + pagenumber);
+
+        var lastspan = document.createElement("span");
+        lastspan.appendChild(document.createTextNode('⏩'));
+
+        alast.appendChild(lastspan);
+        lilast.appendChild(alast);
+
+        document.getElementById("pagination").appendChild(lilast);
 
 
 
+
+
+                //Cards
         for(var i = 0; i < json.results.length; i++){
 
             var col = document.createElement("div");
@@ -84,7 +128,7 @@ function setHref (a, url) {
             };
 
             var a = document.createElement("a");
-            setHref(a, `/info.html?id=${json.results[i].id}`);
+            setHref(a, `/info/info.html?id=${json.results[i].id}`);
             a.setAttribute("class", "btn btn-success");
             a.setAttribute("target", "_blank");
             a.appendChild(document.createTextNode("Information"));
